@@ -2,6 +2,8 @@
 
 An open source application built using Next.js 13.
 
+Deployed here: https://entro-task.vercel.app
+
 > **Warning**
 > You will need a Postgress database to run.
 > There is no auth in this App.
