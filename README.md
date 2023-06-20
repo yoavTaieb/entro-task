@@ -5,7 +5,7 @@ An open source application built using Next.js 13.
 > **Warning**
 > You will need a Postgress database to run.
 > There is no auth in this App.
-
+> You will need a Slack App to connect to Slack.
 
 ## Features
 
@@ -13,6 +13,7 @@ An open source application built using Next.js 13.
 - Tasks Details
 - Edit Task
 - Link tasks
+- Connect to Slack
 - Responsive UI
 - API Routes
 - ORM using **Prisma**

@@ -40,7 +40,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         //send welcome message to user
         await client.chat.postMessage({
-            text: "👋 Successfully connected to Onboard",
+            text: "👋 Successfully connected to EntroTask",
             channel: slackUserId,
         })
 
