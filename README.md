@@ -26,14 +26,14 @@ An open source application built using Next.js 13.
 - [x] ~Responsive UI~
 - [x] ~Placeholders~
 - [x] ~Loading Skeletons~
-- [x] Keyboard Shortcut
-- [x] Dark mode
+- [] Keyboard Shortcut
+- [] Dark mode
 
 ## Known Issues
 
 A list of things not working right now:
 
-1. ~Drawer does not destroy when closed~
+1. Drawer does not destroy when closed
 
 ## Running Locally
 
@@ -53,7 +53,6 @@ cp .env.example .env.local
 
 ```sh
 npm run build
-```
 ```
 
 4. Start the development server:
