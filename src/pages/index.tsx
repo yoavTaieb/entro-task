@@ -11,9 +11,16 @@ import TaskList from "~/components/task-list/task-list";
 import TaskListSkeleton from "~/components/task-list/task-list-skeleton";
 import NoTaskPlaceholder from "~/components/ui/no-task-placeholder";
 import SlackButton from "~/components/integration/slack-btn";
+import { useKeyboardShortcut } from "~/utils/shortcut";
+import { useRouter } from "next/router";
 
 const Home: NextPageWithLayout = () => {
+  const router = useRouter()
   const tasks = api.task.getAll.useQuery()
+
+  useKeyboardShortcut(["ctrl", "shift", "t"], () => {
+    router.push("/new")
+  });
 
   const slackIntegration = api.integration.isConnected.useQuery()
   const disconectSlack = api.integration.disconnect.useMutation({

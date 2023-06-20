@@ -13,6 +13,7 @@ An open source application built using Next.js 13.
 - Tasks Details
 - Edit Task
 - Link tasks
+- Create task by pressing **ctrl + shift + T**
 - Connect to Slack
 - Responsive UI
 - API Routes
@@ -38,6 +39,7 @@ An open source application built using Next.js 13.
 A list of things not working right now:
 
 1. Drawer does not destroy when closed
+2. The Task Card is not clickable on the right side
 
 ## Running Locally
 
