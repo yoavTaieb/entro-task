@@ -48,3 +48,9 @@ model User {
 
     @@map("users")
 }
+
+model SlackIntegration {
+    id          String @id @default(cuid())
+    slackUserId String
+    accessToken String
+}

@@ -10,20 +10,41 @@ import { Button } from "@chakra-ui/react";
 import TaskList from "~/components/task-list/task-list";
 import TaskListSkeleton from "~/components/task-list/task-list-skeleton";
 import NoTaskPlaceholder from "~/components/ui/no-task-placeholder";
+import SlackButton from "~/components/integration/slack-btn";
 
 const Home: NextPageWithLayout = () => {
   const tasks = api.task.getAll.useQuery()
+
+  const slackIntegration = api.integration.isConnected.useQuery()
+  const disconectSlack = api.integration.disconnect.useMutation({
+    onSuccess: () => {
+      slackIntegration.refetch()
+    }
+  })
 
   return (
     <>
       <TaskDetail />
       <DashboardShell>
         <DashboardHeader heading="Tasks" text="Create and manage Tasks.">
-          <Link href={"/new"}>
-            <Button size={"md"} variant="outline">
-              New Task
-            </Button>
-          </Link>
+          <div className="flex flex-row space-x-3">
+            {
+              slackIntegration.data?.isConnected ? (
+                <Button onClick={() => disconectSlack.mutate()} size={"md"} variant="outline">
+                  Disconnect Slack
+                </Button>
+              ) : (
+                <SlackButton onSuccess={() => {
+                  slackIntegration.refetch()
+                }} />
+              )
+            }
+            <Link href={"/new"}>
+              <Button size={"md"} variant="outline">
+                New Task
+              </Button>
+            </Link>
+          </div>
         </DashboardHeader>
         <div className="mt-6 space-y-4">
           {

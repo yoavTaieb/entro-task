@@ -3,7 +3,8 @@
 An open source application built using Next.js 13.
 
 > **Warning**
-> This app is not production-ready.
+> You will need a Postgress database to run.
+> There is no auth in this App.
 
 
 ## Features
@@ -20,12 +21,14 @@ An open source application built using Next.js 13.
 - Styled using **Tailwind CSS**
 - Validations using **Zod**
 - Written in **TypeScript**
+- State using **Zustand**
 
 ## Roadmap
 
 - [x] ~Responsive UI~
 - [x] ~Placeholders~
 - [x] ~Loading Skeletons~
+- [x] ~Slack Integration~
 - [] Keyboard Shortcut
 - [] Dark mode
 
@@ -49,7 +52,7 @@ npm install
 cp .env.example .env.local
 ```
 
-3. Build the app to seed populate de DB with some users:
+3. Build the app to seed-populate the DB with some users:
 
 ```sh
 npm run build

@@ -8,6 +8,7 @@ interface Props {
     subtitle?: React.ReactNode;
     isTitleEditable?: boolean;
     onTitleChange?: (title: string) => void;
+    titleError?: boolean;
 }
 
 const RiskCard: React.FC<Props> = (props) => {
@@ -25,6 +26,11 @@ const RiskCard: React.FC<Props> = (props) => {
                     value={props.title}
                     variant='unstyled'
                     placeholder="Task Title" />
+                {
+                    props.titleError && (
+                        <span className="text-red-500 text-xs">Title is required</span>
+                    )
+                }
                 <div className="text-[#98A2B3] text-xs">{props.subtitle}</div>
             </div>
 

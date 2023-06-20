@@ -1,4 +1,5 @@
 import { TaskStatus } from "@prisma/client";
+import { WebClient } from "@slack/web-api";
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
@@ -37,7 +38,7 @@ export const taskRouter = createTRPCRouter({
       linkedTasks: z.array(z.string()).optional()
     }))
     .mutation(async ({ ctx, input }) => {
-      return await ctx.prisma.task.create({
+      const res = await ctx.prisma.task.create({
         data: {
           title: input.title,
           description: input.description,
@@ -48,6 +49,21 @@ export const taskRouter = createTRPCRouter({
         },
         select: { id: true }
       })
+
+      const slackToken = await ctx.prisma.slackIntegration.findUnique({
+        where: { id: "entro-guest" }
+      })
+
+      if (slackToken?.accessToken) {
+        const client = new WebClient(slackToken.accessToken);
+        //send welcome message to user
+        await client.chat.postMessage({
+          text: `🚀 New task created! ${input.title}`,
+          channel: slackToken.slackUserId,
+        })
+      }
+
+      return res;
     }),
   addLinkedTask: publicProcedure
     .input(z.object({
@@ -73,17 +89,6 @@ export const taskRouter = createTRPCRouter({
       await ctx.prisma.task.update({
         where: { id: input.id },
         data: { status: input.status }
-      })
-    }),
-  updateTitle: publicProcedure
-    .input(z.object({
-      id: z.string(),
-      title: z.string()
-    }))
-    .mutation(async ({ ctx, input }) => {
-      await ctx.prisma.task.update({
-        where: { id: input.id },
-        data: { title: input.title }
       })
     }),
   updateDescription: publicProcedure

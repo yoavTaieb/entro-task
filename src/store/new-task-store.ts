@@ -37,7 +37,7 @@ export const useTaskStore = create<NewTaskState>((set) => ({
     step: 0,
     errors: [],
 
-    setTitle: (title) => set({ title }),
+    setTitle: (title) => set((state) => ({ title: title, errors: state.errors.filter((error) => error != "title") })),
     setAssigneeId: (id) => set({ assigneeId: id }),
     setDescription: (description) => set({ description }),
 

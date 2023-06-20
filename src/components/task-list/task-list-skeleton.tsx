@@ -8,6 +8,7 @@ const TaskListSkeleton = () => {
                 {
                     [1, 2, 3, 4, 5].map((task) => (
                         <div
+                            key={task}
                             className=" flex items-center justify-between py-3 px-4 sm:py-7 sm:px-8 border border-[#F0F2F7] rounded-lg hover:shadow-md cursor-pointer"
                         >
                             <RiskCardSkeleton />

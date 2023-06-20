@@ -14,16 +14,18 @@ const Step1Form = () => {
     const title = useTaskStore((state) => state.title)
     const setTitle = useTaskStore((state) => state.setTitle)
 
+    const errors = useTaskStore((state) => state.errors)
+
     const assignee = useTaskStore((state) => state.assigneeId)
     const setAssignee = useTaskStore((state) => state.setAssigneeId)
 
     return (
-
         <div className="flex flex-row justify-between items-center border-b border-gray-300 py-6 space-x-3">
             <RiskCard
                 title={title}
                 isTitleEditable={true}
                 onTitleChange={(v) => { setTitle(v) }}
+                titleError={errors.find((e) => e === 'title') !== undefined}
                 subtitle={<span>{formatLongDate(new Date())}</span>}
                 icon={<PlusCircleIcon className="h-9" />}
             />

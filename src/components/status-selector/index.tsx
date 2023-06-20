@@ -1,4 +1,4 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react"
+import { Button, Menu, MenuButton, MenuItem, MenuList, Portal } from "@chakra-ui/react"
 import { TaskStatus } from "@prisma/client"
 import { FC, useState } from "react"
 import { api } from "~/utils/api"
@@ -14,27 +14,30 @@ const StatusSelector: FC<{
     return (
         <Menu>
             <MenuButton
+                onClick={(e) => e.stopPropagation()}
                 variant={"ghost"} as={Button}>
                 {getStatus(status)}
             </MenuButton>
-            <MenuList>
-                {
-                    Object.values(TaskStatus).map((status) => (
-                        <MenuItem
-                            key={status}
-                            onClick={() => {
-                                updateStatus.mutate({
-                                    id: props.taskId,
-                                    status
-                                })
-                                setStatus(status)
-                            }}
-                        >
-                            {getStatus(status)}
-                        </MenuItem>
-                    ))
-                }
-            </MenuList>
+            <Portal>
+                <MenuList>
+                    {
+                        Object.values(TaskStatus).map((status) => (
+                            <MenuItem
+                                key={status}
+                                onClick={() => {
+                                    updateStatus.mutate({
+                                        id: props.taskId,
+                                        status
+                                    })
+                                    setStatus(status)
+                                }}
+                            >
+                                {getStatus(status)}
+                            </MenuItem>
+                        ))
+                    }
+                </MenuList>
+            </Portal>
         </Menu>
     )
 }
