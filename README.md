@@ -1,28 +1,63 @@
-# Create T3 App
+# Entro Task
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+An open source application built using Next.js 13.
 
-## What's next? How do I make an app with this?
+> **Warning**
+> This app is not production-ready.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Features
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- Create Task
+- Tasks Details
+- Edit Task
+- Link tasks
+- Responsive UI
+- API Routes
+- ORM using **Prisma**
+- Database on **Postgress**
+- UI Components built using **Chakra UI**
+- Styled using **Tailwind CSS**
+- Validations using **Zod**
+- Written in **TypeScript**
 
-## Learn More
+## Roadmap
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+- [x] ~Responsive UI~
+- [x] ~Placeholders~
+- [x] ~Loading Skeletons~
+- [x] Keyboard Shortcut
+- [x] Dark mode
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## Known Issues
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+A list of things not working right now:
 
-## How do I deploy this?
+1. ~Drawer does not destroy when closed~
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+## Running Locally
+
+1. Install dependencies using npm:
+
+```sh
+npm install
+```
+
+2. Copy `.env.example` to `.env.local` and update the variables.
+
+```sh
+cp .env.example .env.local
+```
+
+3. Build the app to seed populate de DB with some users:
+
+```sh
+npm run build
+```
+```
+
+4. Start the development server:
+
+```sh
+npm run dev
+```

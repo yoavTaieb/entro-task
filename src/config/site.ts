@@ -1,11 +1,11 @@
 import { SiteConfig } from "~/types";
 
 export const siteConfig: SiteConfig = {
-    name: "Taxonomy",
+    name: "EntroTask",
     description:
-        "An open source application built using the new router, server components and everything new in Next.js 13.",
-    url: "https://tx.shadcn.com",
+        "An open source application built with Next.js, TypeScript, Prisma, and PostgreSQL.",
+    url: "https://entrotask.com",
     links: {
-        github: "https://github.com/shadcn/taxonomy",
+        github: "https://github.com/yoavTaieb/entro-task",
     },
 }
